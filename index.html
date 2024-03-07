@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login & Registration Form | Shoaib Tamboli</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="registration form">
+      <header>Signup</header>
+      <form id="signupForm">
+        <input type="text" id="username" placeholder="Enter Username" required autocomplete="username">
+        <input type="email" id="email" placeholder="Enter your email" autocomplete="email">
+        <input type="password" id="password" placeholder="Create a password" >
+        <input type="checkbox" id="showPassword">
+        <label for="showPassword">Show Password</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm your password" >
+        <input type="checkbox" id="showConfirmPassword">
+        <label for="showConfirmPassword">Show Confirm Password</label>
+        <input type="button" class="button" value="Signup" onclick="validateSignupForm()">
+      </form>
+      <div class="signup">
+        <span class="signup">Already have an account?
+         <label for="check">Login</label>
+        </span>
+      </div>
+    </div>
+    <div class="login form">
+      <header>Login</header>
+      <form action="#">
+        <input type="email" placeholder="Enter your email" autocomplete="email">
+        <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password">
+        <input type="checkbox" id="showLoginPassword">
+        <label for="showLoginPassword">Show Password</label><br>
+        <a href="#">Forgot password?</a>
+        <input type="button" class="button" value="Login">
+      </form>
+      <div class="signup">
+        <span class="signup">Don't have an account?
+         <label for="check">Signup</label>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function validateSignupForm() {
+      var username = document.getElementById("username").value;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (username === "" || email === "" || password === "" || confirmPassword === "") {
+        alert("Please complete all fields.");
+        return false;
+      }
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+      }
+      alert("Welcome " + username + ", you are registered!");
+
+      return false;
+      document.getElementById("signupForm").submit();
+    }
+
+    function togglePasswordVisibility(inputId) {
+      var passwordInput = document.getElementById(inputId);
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+      } else {
+        passwordInput.type = "password";
+      }
+    }
+
+    document.getElementById("showPassword").addEventListener("change", function() {
+      togglePasswordVisibility("password");
+    });
+
+    document.getElementById("showConfirmPassword").addEventListener("change", function() {
+      togglePasswordVisibility("confirmPassword");
+    });
+
+    document.getElementById("showLoginPassword").addEventListener("change", function() {
+      togglePasswordVisibility("loginPassword");
+    });
+  </script>
+</body>
+</html>
